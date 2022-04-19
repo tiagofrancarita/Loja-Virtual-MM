@@ -20,11 +20,11 @@ before_script:
 
 test:
     stage: test
-    script: /mvnw test
+    script: ./mvnw test
     
 build:
     stage: build
-    script: /mvnw package -DskipTest
+    script: ./mvnw package -DskipTest
     artifacts:
         paths:
             - target/gitlab-pipeline.jar
