@@ -1,5 +1,7 @@
 package br.com.manomultimarcas.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,42 @@ public class PessoaController {
 		
 		return new ResponseEntity<CepDTO>(cepDTO, HttpStatus.OK);
 		
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaNomePf/{nome}")
+	public ResponseEntity<List<PessoaFisica>> consultaPfNome(@PathVariable("nome") String nome){
+		
+		List<PessoaFisica> fisicas = pessoaFisicaRepository.pesquisaPorNomePf(nome.trim().toUpperCase());
+		
+		return new ResponseEntity<List<PessoaFisica>>(fisicas, HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaCpfPf/{cpf}")
+	public ResponseEntity<List<PessoaFisica>> consultaPfCpf(@PathVariable("cpf") String cpf){
+		
+		List<PessoaFisica> fisicas = pessoaFisicaRepository.pesquisaPorCpfPf(cpf);
+		
+		return new ResponseEntity<List<PessoaFisica>>(fisicas, HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaNomePj/{nome}")
+	public ResponseEntity<List<PessoaJuridica>> consultaPjNome(@PathVariable("nome") String nome){
+		
+		List<PessoaJuridica> fisicas = pessoaRepository.pesquisaPorNomePj(nome.trim().toUpperCase());
+		
+		return new ResponseEntity<List<PessoaJuridica>>(fisicas, HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaCnpjPj/{cnpj}")
+	public ResponseEntity<List<PessoaJuridica>> consultaPjCnpj(@PathVariable("cnpj") String cnpj){
+		
+		List<PessoaJuridica> juridicas = pessoaRepository.consultaCnpj(cnpj);
+		
+		return new ResponseEntity<List<PessoaJuridica>>(juridicas, HttpStatus.OK);
 	}
 	
 	private static final Logger Logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(PessoaController.class);
