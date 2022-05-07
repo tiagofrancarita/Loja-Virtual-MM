@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,9 @@ public class PessoaController {
 	@Autowired
 	private PessoaUserService pessoaUserService;
 	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
 	//@Autowired
 	//private EnderecoRepository enderecoRepository;
 	
@@ -56,6 +60,8 @@ public class PessoaController {
 	public ResponseEntity<List<PessoaFisica>> consultaPfNome(@PathVariable("nome") String nome){
 		
 		List<PessoaFisica> fisicas = pessoaFisicaRepository.pesquisaPorNomePf(nome.trim().toUpperCase());
+		
+		jdbcTemplate.execute("begin; UPDATE tabela_acesso_end_point SET qtd_acesso_end_point = qtd_acesso_end_point + 1 WHERE nome_end_point = 'END-POINT-NOME-PESSOA-FISICA'; commit;");
 		
 		return new ResponseEntity<List<PessoaFisica>>(fisicas, HttpStatus.OK);
 	}
