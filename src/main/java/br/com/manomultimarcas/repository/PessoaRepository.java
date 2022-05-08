@@ -1,12 +1,9 @@
 package br.com.manomultimarcas.repository;
 
 import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import br.com.manomultimarcas.model.PessoaFisica;
 import br.com.manomultimarcas.model.PessoaJuridica;
 
 @Repository

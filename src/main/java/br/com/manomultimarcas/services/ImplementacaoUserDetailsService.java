@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import br.com.manomultimarcas.model.Usuario;
 import br.com.manomultimarcas.repository.UsuarioRepository;
 
@@ -20,8 +19,6 @@ public class ImplementacaoUserDetailsService implements UserDetailsService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ImplementacaoUserDetailsService.class);
 	
-	
-
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
@@ -43,5 +40,4 @@ public class ImplementacaoUserDetailsService implements UserDetailsService {
 		return new User(usuario.getLogin(), usuario.getPassword(), usuario.getAuthorities());
 		
 	}
-
 }

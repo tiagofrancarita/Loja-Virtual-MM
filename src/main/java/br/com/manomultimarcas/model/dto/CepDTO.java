@@ -17,7 +17,6 @@ public class CepDTO implements Serializable {
 	  private String ddd;
 	  private String siafi;
 	  
-	  
 	public String getCep() {
 		return cep;
 	}
@@ -78,5 +77,4 @@ public class CepDTO implements Serializable {
 	public void setSiafi(String siafi) {
 		this.siafi = siafi;
 	}
-	
 }

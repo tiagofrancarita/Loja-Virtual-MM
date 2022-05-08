@@ -25,7 +25,6 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaService categoriaService;
 	
-		
 	@ResponseBody
 	@PostMapping(value = "**/salvarCategoria")
 	public ResponseEntity<CategoriaProduto> salvarCategoria(@RequestBody @Valid CategoriaProduto categoriaProduto) throws ExceptionLojaVirtual{
@@ -34,18 +33,13 @@ public class CategoriaController {
 			throw new ExceptionLojaVirtual("Categoria não pode ser nulo.");
 			
 		}
-		// pessoaFisica.getId() == null && pessoaFisicaRepository.cpfExistente(pessoaFisica.getCpf()) != null
-		
+	
 		if (categoriaProduto.getId() == null && categoriaRepository.descricaoExistente(categoriaProduto.getDescricaoCategoria()) != null) {
 			throw new ExceptionLojaVirtual("Descrição já cadastrada");
 		}
 		
 		categoriaProduto = categoriaService.salvarCategoria(categoriaProduto);
 		
-		// return new ResponseEntity<PessoaFisica>(pessoaFisica, HttpStatus.OK);
-		
 		return new ResponseEntity<CategoriaProduto>(categoriaProduto, HttpStatus.OK);
-		
 	}
-
 }

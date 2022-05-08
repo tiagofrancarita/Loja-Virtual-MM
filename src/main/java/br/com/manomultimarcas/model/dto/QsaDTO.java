@@ -4,11 +4,7 @@ import java.io.Serializable;
 
 public class QsaDTO implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
 	
 	private String nome;
 	private String qual;
@@ -55,5 +51,4 @@ public class QsaDTO implements Serializable {
 	public void setQual_rep_legal(String qual_rep_legal) {
 		this.qual_rep_legal = qual_rep_legal;
 	}
-
 }

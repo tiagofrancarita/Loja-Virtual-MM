@@ -20,7 +20,6 @@ public class ConsultaCnpjDto implements Serializable {
 	private String email;
 
 	private List<AtividadeDto> atividades_secundarias = new ArrayList<AtividadeDto>();
-
 	private List<QsaDTO> qsa = new ArrayList<QsaDTO>();
 
 	private String situacao;
@@ -45,7 +44,6 @@ public class ConsultaCnpjDto implements Serializable {
 
 	@JsonIgnore
 	private ExtraDTO extra;
-
 	private BillingDTO billing;
 
 	public List<AtividadeDto> getAtividade_principal() {
@@ -287,5 +285,4 @@ public class ConsultaCnpjDto implements Serializable {
 	public void setBilling(BillingDTO billing) {
 		this.billing = billing;
 	}
-
 }

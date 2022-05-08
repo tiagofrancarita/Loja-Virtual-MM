@@ -109,9 +109,7 @@ public class JWTTokenAutenticacaoService {
 		}
 		
 		return null;
-
 	}
-	
 	 // Liberacao para erro de cors no navegador.
 	private void liberacaoCors(HttpServletResponse response) {
 		

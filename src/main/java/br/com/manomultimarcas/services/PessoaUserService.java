@@ -158,5 +158,4 @@ public class PessoaUserService {
 	public ConsultaCnpjDto consultaCnpjReceitaWS(String cnpj) {
 		return new RestTemplate().getForEntity("https://receitaws.com.br/v1/cnpj/" + cnpj, ConsultaCnpjDto.class).getBody();
 	}
-	
 }

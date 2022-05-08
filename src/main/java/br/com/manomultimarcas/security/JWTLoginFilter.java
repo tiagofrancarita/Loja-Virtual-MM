@@ -1,6 +1,5 @@
 package br.com.manomultimarcas.security;
 
-
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -67,8 +66,5 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 			logger.error("Falha ao realizar o login, entre em contato com a equipe responsável pelo suporte do sistema."
 					+ "Falha:" + failed.getMessage() + failed.getClass());
 		}
-		
-		//super.unsuccessfulAuthentication(request, response, failed);
 	}
-	
 }
