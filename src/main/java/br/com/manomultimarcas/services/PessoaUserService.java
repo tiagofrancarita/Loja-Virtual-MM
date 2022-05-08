@@ -13,6 +13,7 @@ import br.com.manomultimarcas.model.PessoaFisica;
 import br.com.manomultimarcas.model.PessoaJuridica;
 import br.com.manomultimarcas.model.Usuario;
 import br.com.manomultimarcas.model.dto.CepDTO;
+import br.com.manomultimarcas.model.dto.ConsultaCnpjDto;
 import br.com.manomultimarcas.repository.PessoaFisicaRepository;
 import br.com.manomultimarcas.repository.PessoaRepository;
 import br.com.manomultimarcas.repository.UsuarioRepository;
@@ -153,4 +154,9 @@ public class PessoaUserService {
 		return new RestTemplate().getForEntity("https://viacep.com.br/ws/"+ cep +"/json/", CepDTO.class).getBody();
 		
 	}
+	
+	public ConsultaCnpjDto consultaCnpjReceitaWS(String cnpj) {
+		return new RestTemplate().getForEntity("https://receitaws.com.br/v1/cnpj/" + cnpj, ConsultaCnpjDto.class).getBody();
+	}
+	
 }
