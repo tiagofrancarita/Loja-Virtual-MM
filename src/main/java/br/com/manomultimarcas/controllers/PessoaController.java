@@ -1,26 +1,27 @@
 package br.com.manomultimarcas.controllers;
 
 import java.util.List;
-
 import javax.validation.Valid;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.manomultimarcas.enums.TipoPessoa;
 //import br.com.manomultimarcas.model.Endereco;
 import br.com.manomultimarcas.model.PessoaFisica;
 import br.com.manomultimarcas.model.PessoaJuridica;
 import br.com.manomultimarcas.model.dto.CepDTO;
+import br.com.manomultimarcas.model.dto.ConsultaCnpjDto;
 //import br.com.manomultimarcas.repository.EnderecoRepository;
 import br.com.manomultimarcas.repository.PessoaFisicaRepository;
 import br.com.manomultimarcas.repository.PessoaRepository;
+import br.com.manomultimarcas.services.ContagemApiService;
 import br.com.manomultimarcas.services.PessoaUserService;
 import br.com.manomultimarcas.util.ExceptionLojaVirtual;
 import br.com.manomultimarcas.util.ValidaCnpj;
@@ -40,18 +41,21 @@ public class PessoaController {
 	private PessoaUserService pessoaUserService;
 	
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
-	
-	//@Autowired
-	//private EnderecoRepository enderecoRepository;
+	private ContagemApiService contagemApiService;
 	
 	@ResponseBody
 	@GetMapping(value = "**/consultaCep/{cep}")
-	public ResponseEntity<CepDTO> coonsultaCep(@PathVariable("cep") String cep){
+	public ResponseEntity<CepDTO> consultaCep(@PathVariable("cep") String cep){
+	
+		return new ResponseEntity<CepDTO>(pessoaUserService.consultaCep(cep), HttpStatus.OK);
 		
-		CepDTO cepDTO =  pessoaUserService.consultaCep(cep);
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "**/consultaCnpjReceitaWs/{cnpj}")
+	public ResponseEntity<ConsultaCnpjDto> consultaCnpjReceitaWs(@PathVariable("cnpj") String cnpj){
 		
-		return new ResponseEntity<CepDTO>(cepDTO, HttpStatus.OK);
+	  return new ResponseEntity<ConsultaCnpjDto>(pessoaUserService.consultaCnpjReceitaWS(cnpj), HttpStatus.OK);
 		
 	}
 	
@@ -61,7 +65,7 @@ public class PessoaController {
 		
 		List<PessoaFisica> fisicas = pessoaFisicaRepository.pesquisaPorNomePf(nome.trim().toUpperCase());
 		
-		jdbcTemplate.execute("begin; UPDATE tabela_acesso_end_point SET qtd_acesso_end_point = qtd_acesso_end_point + 1 WHERE nome_end_point = 'END-POINT-NOME-PESSOA-FISICA'; commit;");
+		contagemApiService.contagemEndPointPF();
 		
 		return new ResponseEntity<List<PessoaFisica>>(fisicas, HttpStatus.OK);
 	}
@@ -101,21 +105,19 @@ public class PessoaController {
 	public ResponseEntity<PessoaJuridica> salvarPj (@RequestBody @Valid PessoaJuridica pessoaJuridica) throws ExceptionLojaVirtual{
 		
 		Logger.info("Iniciando o cadastro de pessoa jurídica.");
-		
-		/*
-		if (pessoaJuridica.getNome() == null || pessoaJuridica.getNome().trim().isEmpty()) {
-			Logger.error("Processo de cadastro encerrado com falhas.");
-			Logger.error("O campo nome não pode ser nulo ou vazio, favor preencher");
-			throw new ExceptionLojaVirtual("O campo nome não pode ser nulo ou vazio, favor preencher");
-		}*/
-		
-		
-		
+
 		if (pessoaJuridica == null) {
 			
 			Logger.error("Processo de cadastro encerrado com falhas.");
 			Logger.error("Pessoa jurídica não pode ser nulo.");
 			throw new ExceptionLojaVirtual("Pessoa jurídica não pode ser nulo.");
+		}
+		
+		if (pessoaJuridica.getTipoPessoa() == null) {
+			Logger.error("Processo de cadastro encerrado com falhas.");
+			Logger.error("Necessário informar o tipo de pessoa juridica: Juridico ou Fornecedor");
+			throw new ExceptionLojaVirtual("Necessário informar o tipo de pessoa juridica");
+			
 		}
 		
 		if (pessoaJuridica.getId() == null && pessoaRepository.cnpjExistente(pessoaJuridica.getCnpj()) != null) {
@@ -193,6 +195,11 @@ public class PessoaController {
 			throw new ExceptionLojaVirtual("Pessoa fisica não pode ser nulo.");
 		}
 		
+		if (pessoaFisica.getTipoPessoa() == null) {
+			pessoaFisica.setTipoPessoa(TipoPessoa.FISICA.name());
+			
+		}
+		
 		if (pessoaFisica.getId() == null && pessoaFisicaRepository.cpfExistente(pessoaFisica.getCpf()) != null) {
 			Logger.error("Processo de cadastro encerrado com falhas.");
 			Logger.error("CPF já cadastrado" + pessoaFisica.getCpf());
@@ -212,5 +219,4 @@ public class PessoaController {
 		return new ResponseEntity<PessoaFisica>(pessoaFisica, HttpStatus.OK);
 		
 	}
-
 }

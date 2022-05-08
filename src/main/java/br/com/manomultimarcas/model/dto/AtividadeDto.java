@@ -2,26 +2,28 @@ package br.com.manomultimarcas.model.dto;
 
 import java.io.Serializable;
 
-public class ObjetoErroDto implements Serializable {
-	
+public class AtividadeDto implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
-	private String error;
+
+	private String text;
+
 	private String code;
-	
-	public String getError() {
-		return error;
+
+	public String getText() {
+		return text;
 	}
-	public void setError(String error) {
-		this.error = error;
+
+	public void setText(String text) {
+		this.text = text;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
-	
 
 }

@@ -1,6 +1,5 @@
 package br.com.manomultimarcas.security;
 
-
 import javax.servlet.http.HttpSessionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

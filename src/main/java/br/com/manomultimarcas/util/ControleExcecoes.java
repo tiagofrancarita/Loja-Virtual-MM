@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import br.com.manomultimarcas.model.dto.ObjetoErroDto;
+import br.com.manomultimarcas.model.dto.ObjetoErroDTO;
 import br.com.manomultimarcas.services.ServiceSendEmail;
 
 
@@ -35,7 +35,7 @@ public class ControleExcecoes extends ResponseEntityExceptionHandler {
 	@ExceptionHandler({ExceptionLojaVirtual.class})
 	public ResponseEntity<Object> handleExceptionCustom(ExceptionLojaVirtual exLojaVirtual){
 		
-		ObjetoErroDto objetoErroDto = new ObjetoErroDto();
+		ObjetoErroDTO objetoErroDto = new ObjetoErroDTO();
 		
 		objetoErroDto.setError(exLojaVirtual.getMessage());
 		objetoErroDto.setError(HttpStatus.OK.toString());
@@ -49,7 +49,7 @@ public class ControleExcecoes extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
 		
-		ObjetoErroDto objetoErroDTO = new ObjetoErroDto();
+		ObjetoErroDTO objetoErroDTO = new ObjetoErroDTO();
 		
 		String mensagemErro = "";
 		
@@ -93,7 +93,7 @@ public class ControleExcecoes extends ResponseEntityExceptionHandler {
 										SQLException.class})
 	protected ResponseEntity<Object> handleExceptionDataIntegry(Exception ex){
 	
-		ObjetoErroDto objetoErroDTO = new ObjetoErroDto();
+		ObjetoErroDTO objetoErroDTO = new ObjetoErroDTO();
 		String mensagemErro = "";
 		
 		if (ex instanceof DataIntegrityViolationException) {

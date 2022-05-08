@@ -15,7 +15,6 @@ public class CategoriaService {
 		
 		categoriaProduto = categoriaRepository.save(categoriaProduto);
 		
-		return categoriaRepository.save(categoriaProduto);
-		
+		return categoriaRepository.save(categoriaProduto);	
 	}
 }

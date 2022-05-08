@@ -17,5 +17,4 @@ public class AcessoService {
 		/* Qualquer validação é feita aqui antes de salvar */
 		return acessoRepository.save(acesso);
 	}
-		
 }
