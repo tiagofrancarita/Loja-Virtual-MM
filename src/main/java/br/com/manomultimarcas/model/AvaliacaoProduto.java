@@ -43,7 +43,8 @@ public class AvaliacaoProduto implements Serializable {
 	private Pessoa pessoa;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	@JoinColumn (name = "empresaid",nullable = false, 
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
 	

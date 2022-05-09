@@ -35,7 +35,6 @@ public class NotaFiscalVenda implements Serializable {
 	private String tipoNota;
 	
 	@Column(columnDefinition = "text", nullable = false) //Coluna de texto sem limite
-	
 	private String notaXML;
 	
 	@Column(columnDefinition = "text", nullable = false)//Coluna de texto sem limite
@@ -47,7 +46,8 @@ public class NotaFiscalVenda implements Serializable {
 	private VendaCompraLojaVirtual vendacompralojavirtual;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	@JoinColumn (name = "empresaid",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
 	public VendaCompraLojaVirtual getVendacompralojavirtual() {

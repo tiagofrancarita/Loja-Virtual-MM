@@ -4,24 +4,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
-
-import br.com.manomultimarcas.controllers.CategoriaController;
 import br.com.manomultimarcas.model.CategoriaProduto;
 import br.com.manomultimarcas.model.PessoaJuridica;
-import br.com.manomultimarcas.repository.CategoriaRepository;
+import br.com.manomultimarcas.repository.CategoriaProdutoRepository;
 import br.com.manomultimarcas.repository.PessoaRepository;
 import br.com.manomultimarcas.util.ExceptionLojaVirtual;
-
 
 @Profile("test")
 @SpringBootTest(classes = LojaVirtualManosMultimarcasApplication.class)
 public class TesteCadastroCategoria {
-
-	@Autowired
-	private CategoriaController categoriaController;
 	
 	@Autowired
-	private CategoriaRepository categoriaRepository;
+	private CategoriaProdutoRepository categoriaProdutoRepository;
 	
 	@Autowired
 	private PessoaRepository pessoaRepository;
@@ -39,6 +33,8 @@ public class TesteCadastroCategoria {
 		
 		// pessoaFisicaTeste = pessoaController.salvarPf(pessoaFisicaTeste).getBody();
 		
-		categoriaProdutoTeste = categoriaController.salvarCategoria(categoriaProdutoTeste).getBody();
+		categoriaProdutoTeste = categoriaProdutoRepository.save(categoriaProdutoTeste);
+				
+				
 	}
 }
