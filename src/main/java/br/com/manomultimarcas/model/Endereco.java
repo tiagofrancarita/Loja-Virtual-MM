@@ -70,7 +70,8 @@ public class Endereco implements Serializable {
 	
 	@JsonIgnore
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "pessoaID",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
+	@JoinColumn (name = "pessoaID",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
 	private Pessoa pessoa;
 	
 	@Enumerated(EnumType.STRING)
@@ -79,7 +80,8 @@ public class Endereco implements Serializable {
 	
 	@JsonIgnore
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	@JoinColumn (name = "empresaid",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
 	public Pessoa getEmpresa() {

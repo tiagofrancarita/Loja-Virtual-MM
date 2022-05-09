@@ -44,11 +44,13 @@ public class Usuario implements UserDetails {
 	private String senha;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "pessoaID",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
+	@JoinColumn (name = "pessoaID",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
 	private Pessoa pessoa;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	@JoinColumn (name = "empresaid",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
 	@Temporal(TemporalType.DATE)
@@ -110,8 +112,6 @@ public class Usuario implements UserDetails {
 	public void setEmpresa(Pessoa empresa) {
 		this.empresa = empresa;
 	}
-	
-	
 	
 	public Pessoa getPessoa() {
 		return pessoa;

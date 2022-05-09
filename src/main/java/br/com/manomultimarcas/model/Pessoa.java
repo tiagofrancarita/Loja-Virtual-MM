@@ -65,7 +65,7 @@ public abstract class Pessoa implements Serializable {
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
 	@JoinColumn (name = "empresaid",nullable = true, 
-	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
 	public Pessoa getEmpresa() {

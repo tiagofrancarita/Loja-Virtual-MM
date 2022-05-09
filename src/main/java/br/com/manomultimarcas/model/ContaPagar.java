@@ -36,11 +36,13 @@ public class ContaPagar implements Serializable {
 	private Long id;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "pessoaID",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
+	@JoinColumn (name = "pessoaID",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
 	private Pessoa pessoa;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "pessoaFornecedorID", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFornecedorFK") )
+	@JoinColumn (name = "pessoaFornecedorID", nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFornecedorFK") )
 	private Pessoa pessoaFornecedor;
 	
 	@Enumerated(EnumType.STRING)
@@ -63,7 +65,8 @@ public class ContaPagar implements Serializable {
 	private BigDecimal valorDesconto;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	@JoinColumn (name = "empresaid",nullable = false, 
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
 	public Pessoa getEmpresa() {

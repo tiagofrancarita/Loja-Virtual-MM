@@ -74,10 +74,10 @@ public class Produto implements Serializable {
 	private Boolean ativo = Boolean.TRUE;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaid") )
+	@JoinColumn (name = "empresaid",nullable = false,
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
-
 	public Pessoa getEmpresa() {
 		return empresa;
 	}
