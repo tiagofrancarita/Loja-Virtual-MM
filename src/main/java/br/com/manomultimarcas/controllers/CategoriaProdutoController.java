@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import br.com.manomultimarcas.model.Acesso;
 import br.com.manomultimarcas.model.CategoriaProduto;
 import br.com.manomultimarcas.model.dto.CategoriaProdutoDto;
 import br.com.manomultimarcas.repository.CategoriaProdutoRepository;
@@ -55,10 +53,10 @@ public class CategoriaProdutoController {
 	
 	@ResponseBody //Poder dar um retorno da API
 	@PostMapping(value = "**/deletarCategoria") //URL para receber o json 
-	public ResponseEntity<?> deletarAcesso(@RequestBody CategoriaProduto categoriaProduto) {// Recebe o json e converte para objeto
+	public ResponseEntity<String> deletarAcesso(@RequestBody CategoriaProduto categoriaProduto) {// Recebe o json e converte para objeto
 		
 		categoriaProdutoRepository.deleteById(categoriaProduto.getId());
-		return new ResponseEntity("Categoria excluída com sucesso.",HttpStatus.OK);
+		return new ResponseEntity<String>("Categoria excluída com sucesso.",HttpStatus.OK);
 		
 	}
 	
@@ -68,7 +66,7 @@ public class CategoriaProdutoController {
 		
 		List <CategoriaProduto> categoriaProdutos =  categoriaProdutoRepository.buscarCategoriaDescricao(desc.toUpperCase());
 		
-		return new ResponseEntity(categoriaProdutos, HttpStatus.OK);
+		return new ResponseEntity<List<CategoriaProduto>>(categoriaProdutos, HttpStatus.OK);
 		
 	}
 }

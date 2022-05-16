@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.manomultimarcas.model.Acesso;
 import br.com.manomultimarcas.repository.AcessoRepository;
-import br.com.manomultimarcas.security.JwtApiAutenticacaoFilter;
 import br.com.manomultimarcas.services.AcessoService;
 import br.com.manomultimarcas.util.ExceptionLojaVirtual;
 
@@ -24,7 +23,7 @@ import br.com.manomultimarcas.util.ExceptionLojaVirtual;
 @RestController
 public class AcessoController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(JwtApiAutenticacaoFilter.class);
+	private static final Logger logger = LoggerFactory.getLogger(AcessoController.class);
 	
 	@Autowired
 	private AcessoRepository acessoRepository;
@@ -57,20 +56,20 @@ public class AcessoController {
 	
 	@ResponseBody //Poder dar um retorno da API
 	@PostMapping(value = "**/deletarAcesso") //URL para receber o json 
-	public ResponseEntity<?> deletarAcesso(@RequestBody Acesso acesso) {// Recebe o json e converte para objeto
+	public ResponseEntity<String> deletarAcesso(@RequestBody Acesso acesso) {// Recebe o json e converte para objeto
 		
 		acessoRepository.deleteById(acesso.getId());
-		return new ResponseEntity("Acesso excluído",HttpStatus.OK);
+		return new ResponseEntity<String>("Acesso excluído",HttpStatus.OK);
 		
 	}
 	
 	@ResponseBody
 	@DeleteMapping(value = "**/deletarAcessoPorId/{id}") //URL para receber o json 
-	public ResponseEntity<?> deletarAcessoPorId(@PathVariable("id") Long id) {// Recebe o json e converte para objeto
+	public ResponseEntity<String>  deletarAcessoPorId(@PathVariable("id") Long id) {// Recebe o json e converte para objeto
 		
 		acessoRepository.deleteById(id);
 		
-		return new ResponseEntity("Acesso excluído",HttpStatus.OK);
+		return new ResponseEntity<String>("Acesso excluído",HttpStatus.OK);
 		
 	}
 	
@@ -94,7 +93,7 @@ public class AcessoController {
 		
 		List <Acesso> acesso =  acessoRepository.buscarAcessoDescricao(desc.toUpperCase());
 		
-		return new ResponseEntity(acesso, HttpStatus.OK);
+		return new ResponseEntity<List<Acesso>>(acesso, HttpStatus.OK);
 		
 	}
 }
