@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
@@ -39,6 +38,5 @@ public class LojaVirtualManosMultimarcasApplication implements AsyncConfigurer {
 				executor.setThreadNamePrefix("Asyncrono Thread");
 				executor.initialize();
 				return executor;
-		
 	}
 }
