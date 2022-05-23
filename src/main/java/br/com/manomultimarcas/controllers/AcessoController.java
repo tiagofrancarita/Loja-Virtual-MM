@@ -41,7 +41,7 @@ public class AcessoController {
 			
 			List<Acesso> acessos = acessoRepository.buscarAcessoDescricao(acesso.getDescricao().toUpperCase());
 			
-		if (! acessos.isEmpty()) {
+		if (!acessos.isEmpty()) {
 				logger.error("Processo de cadastro de acesso encerrado com erro.");
 				logger.error("Descrição já cadastrada..");
 				throw new ExceptionLojaVirtual("Descrição já cadastrada." + acesso.getDescricao());

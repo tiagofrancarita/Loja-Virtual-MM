@@ -3,7 +3,6 @@ package br.com.manomultimarcas.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
@@ -19,10 +18,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import javax.validation.constraints.NotNull;
 import br.com.manomultimarcas.enums.StatusContaPagar;
-
-
 
 @Entity
 @Table(name = "ContaPagar")
@@ -35,23 +32,31 @@ public class ContaPagar implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqContaPagar")
 	private Long id;
 	
-	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
+	@ManyToOne(targetEntity = PessoaFisica.class) //muitos para um
 	@JoinColumn (name = "pessoaID",nullable = false,
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFK") )
-	private Pessoa pessoa;
+	private PessoaFisica pessoa;
 	
-	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
+	@ManyToOne(targetEntity = PessoaJuridica.class) //muitos para um
 	@JoinColumn (name = "pessoaFornecedorID", nullable = false,
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoaFornecedorFK") )
-	private Pessoa pessoaFornecedor;
+	private PessoaJuridica pessoaFornecedor;
 	
+	@ManyToOne(targetEntity = PessoaJuridica.class) //muitos para um
+	@JoinColumn (name = "empresaid",nullable = false, 
+	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
+	private PessoaJuridica empresa;
+	
+	@NotNull(message = "Favor informar o campo status da conta a pagar")
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private StatusContaPagar statusContaPagar;
 	
+	@NotNull(message = "Favor informar o campo descrição da conta a pagar.")
 	@Column(nullable = false)
 	private String descricao;
 	
+	@NotNull(message = "Favor informar a data de vencimento da conta a pagar.")
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private Date dtVencimento;
@@ -59,21 +64,17 @@ public class ContaPagar implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dtPagamento;
 	
+	@NotNull(message = "Favor informar o valor total da conta a pagar.")
 	@Column(nullable = false)
 	private BigDecimal valorTotal;
 	
 	private BigDecimal valorDesconto;
 	
-	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
-	@JoinColumn (name = "empresaid",nullable = false, 
-	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
-	private Pessoa empresa;
-	
-	public Pessoa getEmpresa() {
+	public PessoaJuridica getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(Pessoa empresa) {
+	public void setEmpresa(PessoaJuridica empresa) {
 		this.empresa = empresa;
 	}
 
@@ -121,10 +122,10 @@ public class ContaPagar implements Serializable {
 		return id;
 	}
 
-	public Pessoa getPessoa() {
+	public PessoaFisica getPessoa() {
 		return pessoa;
 	}
-	public void setPessoa(Pessoa pessoa) {
+	public void setPessoa(PessoaFisica pessoa) {
 		this.pessoa = pessoa;
 	}
 	public StatusContaPagar getStatusContaPagar() {
@@ -134,11 +135,11 @@ public class ContaPagar implements Serializable {
 		this.statusContaPagar = statusContaPagar;
 	}
 	
-	public Pessoa getPessoaFornecedor() {
+	public PessoaJuridica getPessoaFornecedor() {
 		return pessoaFornecedor;
 	}
 
-	public void setPessoaFornecedor(Pessoa pessoaFornecedor) {
+	public void setPessoaFornecedor(PessoaJuridica pessoaFornecedor) {
 		this.pessoaFornecedor = pessoaFornecedor;
 	}
 

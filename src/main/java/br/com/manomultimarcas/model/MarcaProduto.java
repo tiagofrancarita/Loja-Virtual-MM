@@ -1,7 +1,6 @@
 package br.com.manomultimarcas.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
@@ -13,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "MarcaProduto")
@@ -25,19 +25,21 @@ public class MarcaProduto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMarcaProduto")
 	private Long id;
 	
+	
+	@NotNull(message = "Descrição da marca é obrigatória.")
 	@Column(nullable = false)
 	private String descricaoMarca;
 	
 	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
 	@JoinColumn (name = "empresaid",nullable = false,
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
-	private Pessoa empresa;
+	private PessoaJuridica empresa;
 	
-	public Pessoa getEmpresa() {
+	public PessoaJuridica getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(Pessoa empresa) {
+	public void setEmpresa(PessoaJuridica empresa) {
 		this.empresa = empresa;
 	}
 
