@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import br.com.manomultimarcas.model.CategoriaProduto;
 
 @Repository
+@Transactional
 public interface CategoriaProdutoRepository extends JpaRepository<CategoriaProduto, Long> {
 	
 	@Query("SELECT categ from CategoriaProduto categ WHERE upper(trim(categ.descricaoCategoria)) like %?1%")
