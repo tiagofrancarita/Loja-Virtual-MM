@@ -42,7 +42,6 @@ public class MarcaProdutoController {
 					throw new ExceptionLojaVirtual("Descrição já cadastrada." + marcaProduto.getDescricaoMarca());
 			}
 		
-		
 		}
 
 		logger.info("Acesso cadastrado.");
@@ -65,6 +64,7 @@ public class MarcaProdutoController {
 	@ResponseBody
 	@DeleteMapping(value = "**/deletarMarcaPorId/{id}") //URL para receber o json 
 	public ResponseEntity<String>  deletarMarcaPorId(@PathVariable("id") Long id) {// Recebe o json e converte para objeto
+		
 		
 		marcaProdutoRepository.deleteById(id);
 		
