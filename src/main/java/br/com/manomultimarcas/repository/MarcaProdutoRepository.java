@@ -14,7 +14,7 @@ public interface MarcaProdutoRepository extends JpaRepository<MarcaProduto, Long
 	@Query("SELECT marcaProduto FROM MarcaProduto marcaProduto WHERE UPPER(TRIM(marcaProduto.descricaoMarca)) LIKE %?1%")
 	List<MarcaProduto> buscarMarcaDesc(String desc);
 	
-	@Query("SELECT marcaProduto from MarcaProduto marcaProduto WHERE UPPER(trim(marcaProduto.descricaoMarca)) LIKE %?1% and empresaid = ?2")
+	@Query("SELECT marcaProduto FROM MarcaProduto marcaProduto WHERE UPPER(trim(marcaProduto.descricaoMarca)) LIKE %?1% and empresaid = ?2")
 	List<MarcaProduto> existeMarcaDesc(String desc, Long idEmpresa);
 
 }

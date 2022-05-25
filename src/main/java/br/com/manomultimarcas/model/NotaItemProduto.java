@@ -43,8 +43,6 @@ public class NotaItemProduto implements Serializable {
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
 	private Pessoa empresa;
 	
-	
-
 	public Pessoa getEmpresa() {
 		return empresa;
 	}
