@@ -1,7 +1,6 @@
 package br.com.manomultimarcas.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
@@ -25,6 +24,9 @@ public class NotaItemProduto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqNotaItemProduto")
 	private Long id;
 	
+	@Column(nullable = false)
+	private Double quantidade;
+	
 	@ManyToOne
 	@JoinColumn (name = "notaFiscalCompraID",nullable = false,
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "notaFiscalCompraFK") )
@@ -35,19 +37,16 @@ public class NotaItemProduto implements Serializable {
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "produtoFK") )
 	private Produto produto;
 	
-	@Column(nullable = false)
-	private Double quantidade;
-	
-	@ManyToOne(targetEntity = Pessoa.class) //muitos para um
+	@ManyToOne(targetEntity = PessoaJuridica.class) //muitos para um
 	@JoinColumn (name = "empresaid",nullable = false,
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresaidFK") )
-	private Pessoa empresa;
+	private PessoaJuridica empresa;
 	
-	public Pessoa getEmpresa() {
+	public PessoaJuridica getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(Pessoa empresa) {
+	public void setEmpresa(PessoaJuridica empresa) {
 		this.empresa = empresa;
 	}
 
