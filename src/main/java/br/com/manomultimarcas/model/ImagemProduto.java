@@ -26,7 +26,7 @@ public class ImagemProduto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqImagemProduto")
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(columnDefinition = "text", nullable = false)
 	private String imagemOriginal;
 	
 	@Column(columnDefinition = "text", nullable = false)
