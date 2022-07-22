@@ -1,12 +1,10 @@
 package br.com.manomultimarcas.util;
 
-import br.com.manomultimarcas.model.Logger;
+import org.springframework.web.bind.annotation.RestController;
 
 //|
+@RestController
 public class LoggerUtils {
 	
-	private static String getMessage(Logger message) {
-		
-		return String.format("Titulo: %s, Descrição: %s", message.getTitulo(), message.getDescricao() );
-	}
+	
 }

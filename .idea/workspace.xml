@@ -5,22 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392a8cdb-75f2-43a6-b1f9-493b13d13fa4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/model/PessoaFisica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/model/PessoaFisica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/LojaVirtualManosMultimarcasApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/LojaVirtualManosMultimarcasApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/controllers/ProdutoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/controllers/ProdutoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/util/LoggerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/manomultimarcas/util/LoggerUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/manomultimarcas/TestePessoaFisica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/manomultimarcas/TestePessoaFisica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/br/com/manomultimarcas/TestePessoaUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/br/com/manomultimarcas/TestePessoaUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-homol.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-homol.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/br.com.mano-multimarcas/loja-virtual-manos-multimarcas/pom.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/br.com.mano-multimarcas/loja-virtual-manos-multimarcas/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-homol.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-homol.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V1__init.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V2__30-11-2021.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V3__25-01-2022.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V4__26-04-2022.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +45,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="C:\Users\Tiago de França\.m2\repository" />
-        <option name="mavenHome" value="F:/maven-3.8.3" />
-        <option name="userSettingsFile" value="C:\Users\Tiago de França\.m2\settings.xml" />
+        <option name="mavenHome" value="Use Maven wrapper" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -63,6 +61,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Dados\Repositorios\Loja-Virtual-MM\src\main\resources\db\migration" />
+      <recent name="E:\Dados\Repositorios\Loja-Virtual-MM\src\main\resources" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.LojaVirtualManosMultimarcasApplication">
     <configuration name="LojaVirtualManosMultimarcasApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

@@ -1,6 +1,9 @@
 package br.com.manomultimarcas;
 
 import java.util.concurrent.Executor;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -13,6 +16,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
+
+
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
@@ -21,10 +27,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = {"br.com.manomultimarcas.repository"})
 @EnableTransactionManagement
 public class LojaVirtualManosMultimarcasApplication implements AsyncConfigurer {
+	
+	private static Logger Logger = LoggerFactory.getLogger(LojaVirtualManosMultimarcasApplication.class);
 
 	public static void main(String[] args) {
-	
+		
 		SpringApplication.run(LojaVirtualManosMultimarcasApplication.class, args);
+		Logger.info("Iniciando a aplicação | e-commerce Manos Multimarcas.");
+		Logger.info("Aplicação iniciada com sucesso | e-commerce Manos Multimarcas.");
 	}
 	
 	@Override
