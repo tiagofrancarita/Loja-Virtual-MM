@@ -139,8 +139,13 @@
 		    <artifactId>commons-lang3</artifactId>
 		    <version>3.12.0</version>
 		</dependency>
-		
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+
+    </dependencies>
 
 	<build>
 		<plugins>
